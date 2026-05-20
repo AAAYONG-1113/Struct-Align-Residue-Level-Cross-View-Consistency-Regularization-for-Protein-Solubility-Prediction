@@ -1,0 +1,7 @@
+dataset,model,release,release_order,method_family,auc,acc,mcc,val_threshold,notes
+NetSolP official,Official-like ESM1b,"ESM1b, 2021",2021.00,sequence,0.6305,0.5817,0.2358,,Official NetSolP-like ESM1b baseline.
+NetSolP official,NetSolP-style ESM12,"NetSolP, 2021/2022",2021.90,sequence,0.6788,0.5433,0.1149,,NetSolP-style ESM12 baseline.
+NetSolP official,ESM3-only,"ESM3, Jun 2024",2024.49,esm3,0.7265,0.6931,0.2845,0.310,ESM3-open-small only on official protocol.
+NetSolP official,ProtSolM,"ProtSolM, Jun 2024",2024.50,external,0.7653,0.7211,0.3643,0.600,Reproduced ProtSolM on official protocol.
+NetSolP official,GVP+SupCon,"This project, 2026",2026.20,best,0.7830,0.7256,0.3961,0.640,Current best NetSolP official-protocol result.
+NetSolP official,Struct-Align v1 + ESMFold,"This project, 2026",2026.50,ours,0.7677,0.7226,0.3680,0.605,Competitive with ProtSolM but below GVP+SupCon.

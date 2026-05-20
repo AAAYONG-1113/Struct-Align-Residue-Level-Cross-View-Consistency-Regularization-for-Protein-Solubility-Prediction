@@ -1,0 +1,10 @@
+group,variant,path
+saprot10k_main,struct_align_v1,/home/heyong/Protein_ADMET_SaProt/train_esm3_attn_pool_struct_align_supcon.log
+saprot10k_baseline,esm3_only,/home/heyong/Protein_ADMET_SaProt/logs/esm3_open_small_only_20260424.log
+saprot10k_baseline,protsolm,/home/heyong/Protein_ADMET_SaProt/logs/protsolm_rerun_20260423.log
+netsolp_official,esm3_only,/home/heyong/Protein_ADMET_SaProt/logs/netsolp_official_esm3_only_20260428.log
+netsolp_official,protsolm,/home/heyong/Protein_ADMET_SaProt/logs/protsolm_netsolp_official_20260428.log
+netsolp_official,gvp_supcon,/home/heyong/Protein_ADMET_SaProt/train_esm3_netsolp_supcon.log
+netsolp_official,struct_align_v1,/home/heyong/Protein_ADMET_SaProt/train_esm3_netsolp_esmfold_struct_align_v1.log
+robustness,same_split_3_seeds,/home/heyong/Protein_ADMET_SaProt/logs/struct_align_v1_seeds
+robustness,random_cv5,/home/heyong/Protein_ADMET_SaProt/logs/struct_align_v1_random_cv5

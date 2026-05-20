@@ -1,0 +1,7 @@
+lambda_align, seed, run_dir                                                                                             , best_epoch, best_val_auc      , best_val_threshold , test_auc, test_acc, test_mcc
+        0.0 ,   42, /home/heyong/Protein_ADMET_SaProt/bibm_submission_20260511/alignment_weight_sweep/lambda_0_seed42   ,          2, 0.8201039082010392, 0.5399999999999999 ,   0.8154,   0.7163,   0.4394
+        0.05,   42, /home/heyong/Protein_ADMET_SaProt/bibm_submission_20260511/alignment_weight_sweep/lambda_0p05_seed42,          4, 0.8255402182554021, 0.4599999999999999 ,   0.8318,   0.75  ,   0.5
+        0.1 ,   42, /home/heyong/Protein_ADMET_SaProt/bibm_submission_20260511/alignment_weight_sweep/lambda_0p1_seed42 ,          4, 0.8227859282278593, 0.5299999999999999 ,   0.8313,   0.7163,   0.4428
+        0.2 ,   42, /home/heyong/Protein_ADMET_SaProt/bibm_submission_20260511/alignment_weight_sweep/lambda_0p2_seed42 ,          4, 0.8270578882705788, 0.49499999999999994,   0.8343,   0.7308,   0.4805
+        0.5 ,   42, /home/heyong/Protein_ADMET_SaProt/bibm_submission_20260511/alignment_weight_sweep/lambda_0p5_seed42 ,          8, 0.8246408582464086, 0.695              ,   0.8292,   0.6683,   0.3623
+        1.0 ,   42, /home/heyong/Protein_ADMET_SaProt/bibm_submission_20260511/alignment_weight_sweep/lambda_1p0_seed42 ,          9, 0.8270739482707395, 0.6799999999999999 ,   0.844 ,   0.6923,   0.4268

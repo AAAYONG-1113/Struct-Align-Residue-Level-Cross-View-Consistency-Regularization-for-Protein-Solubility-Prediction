@@ -1,0 +1,4 @@
+setting,label,auc,acc,mcc,notes
+single_split_headline,Struct-Align v1 single split headline,0.8565,0.7740,0.5544,Current best local split result.
+same_split_3_seed_mean,"Struct-Align v1 same split, 3 seeds mean",0.8227,0.7147,0.4430,Mean over seeds 0/1/2 on the same split.
+random_cv5_mean,Struct-Align v1 random CV5 mean,0.8107,0.7275,0.4379,Mean over random 5-fold CV.

@@ -1,0 +1,16 @@
+split,dataset,model,release,release_order,method_family,auc,acc,mcc,lt30_auc,lt30_acc,lt30_mcc,notes
+local,SaProt10k,ESM3-only,"ESM3, Jun 2024",2024.49,sequence,0.7205,0.6154,0.2485,0.7471,0.6099,0.2441,Strict audited ESM3-open-small only baseline.
+local,SaProt10k,ProtSolM,"ProtSolM, Jun 2024",2024.50,external,0.8291,0.7260,0.4606,0.7963,0.7092,0.4261,Reproduced multimodal baseline.
+local,SaProt10k,Attn-pool,"This project, 2026",2026.10,inhouse,0.8240,0.6827,0.4057,0.8046,0.6596,0.3821,Validation-fixed audited in-house baseline.
+local,SaProt10k,GVP+SupCon,"This project, 2026",2026.20,inhouse,0.8237,0.7115,0.4360,0.8048,0.6950,0.4100,Graph-enhanced supervised contrastive baseline.
+local,SaProt10k,SupCon+LayerMix,"This project, 2026",2026.30,ablation,0.8005,0.7163,0.4428,0.8072,0.7376,0.4895,Improves low-homology thresholded metrics but loses overall AUC.
+local,SaProt10k,Struct-adapter,"This project, 2026",2026.35,ablation,0.7806,0.6731,0.3571,0.7945,0.6879,0.3901,Not competitive.
+local,SaProt10k,Cross-attn,"This project, 2026",2026.40,ablation,0.8107,0.6971,0.4311,,,,Cross-attention variant; low-homology audit not available.
+local,SaProt10k,Surface FiLM,"This project, 2026",2026.45,ablation,0.8175,0.7356,0.4801,,,,Surface feature gating / FiLM variant.
+local,SaProt10k,Struct-Align v1,"This project, 2026",2026.50,ours,0.8565,0.7740,0.5544,0.8326,0.7589,0.5390,Current strongest SaProt10k single-split model.
+external,NetSolP official,Official-like ESM1b,"ESM1b, 2021",2021.00,sequence,0.6305,0.5817,0.2358,,,,Official NetSolP-like ESM1b baseline.
+external,NetSolP official,NetSolP-style ESM12,"NetSolP, 2021/2022",2021.90,sequence,0.6788,0.5433,0.1149,,,,NetSolP-style ESM12 baseline.
+external,NetSolP official,ESM3-only,"ESM3, Jun 2024",2024.49,esm3,0.7265,0.6931,0.2845,,,,ESM3-open-small only on official protocol.
+external,NetSolP official,ProtSolM,"ProtSolM, Jun 2024",2024.50,external,0.7653,0.7211,0.3643,,,,Reproduced ProtSolM on official protocol.
+external,NetSolP official,GVP+SupCon,"This project, 2026",2026.20,best,0.7830,0.7256,0.3961,,,,Current best NetSolP official-protocol result.
+external,NetSolP official,Struct-Align v1 + ESMFold,"This project, 2026",2026.50,ours,0.7677,0.7226,0.3680,,,,Competitive with ProtSolM but below GVP+SupCon.

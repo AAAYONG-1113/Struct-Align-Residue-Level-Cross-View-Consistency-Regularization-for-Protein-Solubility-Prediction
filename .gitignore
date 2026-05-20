@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# Logs and process files
+*.log
+*.pid
+
+# LaTeX build artifacts
+*.aux
+*.out
+*.toc
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Model checkpoints and tensor dumps
+*.pth
+*.pt
+*.ckpt
+
+# Archives
+*.tar.gz
+*.zip
+
+# Large intermediate data and structure archives
+tmp/
+pdbs_3000/
+pdbs_7000/
+SaProt_Solubility_3D/
+protsolm_saprot10k/
+protsolm_netsolp_official/
+external_benchmarks/**/*.pdb
+external_benchmarks/**/*.pt
+external_benchmarks/**/*.pth
+
+# Keep lightweight CSV summaries and manuscript materials tracked intentionally.

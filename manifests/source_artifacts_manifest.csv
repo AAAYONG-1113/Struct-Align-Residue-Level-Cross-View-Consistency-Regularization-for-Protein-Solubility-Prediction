@@ -1,0 +1,11 @@
+artifact_type,name,path
+model,Struct-Align v1 checkpoint,/home/heyong/best_esm3_attn_pool_struct_align_supcon.pth
+metadata,Struct-Align v1 metadata,/home/heyong/best_esm3_attn_pool_struct_align_supcon_meta.json
+log,Struct-Align v1 SaProt10k log,/home/heyong/Protein_ADMET_SaProt/train_esm3_attn_pool_struct_align_supcon.log
+log,ESM3-only SaProt10k log,/home/heyong/Protein_ADMET_SaProt/logs/esm3_open_small_only_20260424.log
+log,ProtSolM SaProt10k log,/home/heyong/Protein_ADMET_SaProt/logs/protsolm_rerun_20260423.log
+log,ProtSolM NetSolP official log,/home/heyong/Protein_ADMET_SaProt/logs/protsolm_netsolp_official_20260428.log
+log,NetSolP ESM3-only log,/home/heyong/Protein_ADMET_SaProt/logs/netsolp_official_esm3_only_20260428.log
+log,NetSolP GVP+SupCon log,/home/heyong/Protein_ADMET_SaProt/train_esm3_netsolp_supcon.log
+log,NetSolP Struct-Align v1 log,/home/heyong/Protein_ADMET_SaProt/train_esm3_netsolp_esmfold_struct_align_v1.log
+data,NetSolP official cleaned CSV,/home/heyong/Protein_ADMET_SaProt/external_benchmarks/ready/netsolp_ready_esmfold_struct_clean.csv

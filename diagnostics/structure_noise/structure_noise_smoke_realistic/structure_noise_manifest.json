@@ -1,0 +1,27 @@
+{
+  "csv_path": "/home/heyong/Protein_ADMET_SaProt/solubility_10000_SaProt_Ready.csv",
+  "output_csv": "/home/heyong/Protein_ADMET_SaProt/bibm_submission_20260511/structure_noise_smoke_realistic/structure_noise_sensitivity_saprot10k.csv",
+  "struct_checkpoint": "/home/heyong/best_esm3_attn_pool_struct_align_supcon.pth",
+  "struct_meta": "/home/heyong/best_esm3_attn_pool_struct_align_supcon_meta.json",
+  "no_align_checkpoint": "/home/heyong/best_esm3_attn_pool_supcon.pth",
+  "no_align_meta": "/home/heyong/best_esm3_attn_pool_supcon_meta.json",
+  "coord_noise_levels": [],
+  "edge_dropout_levels": [],
+  "coord_permute_levels": [
+    0.25
+  ],
+  "random_rewire_levels": [
+    0.25
+  ],
+  "block_dropout_levels": [
+    0.25
+  ],
+  "segment_translate_levels": [
+    20.0
+  ],
+  "chain_only_levels": [
+    1.0
+  ],
+  "seed": 42,
+  "limit_test": 8
+}

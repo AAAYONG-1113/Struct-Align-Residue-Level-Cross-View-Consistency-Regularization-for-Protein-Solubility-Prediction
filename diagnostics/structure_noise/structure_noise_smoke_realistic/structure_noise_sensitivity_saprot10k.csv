@@ -1,0 +1,11 @@
+dataset,split,model,model_kind,noise_mode,noise_level,seed,n,threshold,auc,acc,mcc
+SaProt10k,test,Struct-Align,struct_align,coord_permute,0.25,42,8,0.44747474747474747,1.0,0.75,0.4879500364742666
+SaProt10k,test,Struct-Align,struct_align,random_rewire,0.25,42,8,0.44747474747474747,1.0,0.75,0.4879500364742666
+SaProt10k,test,Struct-Align,struct_align,block_dropout,0.25,42,8,0.44747474747474747,1.0,0.75,0.4879500364742666
+SaProt10k,test,Struct-Align,struct_align,segment_translate,20.0,42,8,0.44747474747474747,1.0,0.75,0.4879500364742666
+SaProt10k,test,Struct-Align,struct_align,chain_only,1.0,42,8,0.44747474747474747,1.0,0.75,0.4879500364742666
+SaProt10k,test,Struct-Align w/o Align Loss,no_align,coord_permute,0.25,42,8,0.5700000000000001,1.0,0.75,0.4879500364742666
+SaProt10k,test,Struct-Align w/o Align Loss,no_align,random_rewire,0.25,42,8,0.5700000000000001,1.0,0.75,0.4879500364742666
+SaProt10k,test,Struct-Align w/o Align Loss,no_align,block_dropout,0.25,42,8,0.5700000000000001,1.0,0.75,0.4879500364742666
+SaProt10k,test,Struct-Align w/o Align Loss,no_align,segment_translate,20.0,42,8,0.5700000000000001,1.0,0.75,0.4879500364742666
+SaProt10k,test,Struct-Align w/o Align Loss,no_align,chain_only,1.0,42,8,0.5700000000000001,1.0,0.75,0.4879500364742666

@@ -1,0 +1,52 @@
+[
+  {
+    "fold": 0,
+    "csv_path": "/home/heyong/Protein_ADMET_SaProt/cv5_random/fold_0.csv",
+    "train_n": 7200,
+    "valid_n": 800,
+    "test_n": 2000,
+    "train_pos": 3035,
+    "valid_pos": 337,
+    "test_pos": 844
+  },
+  {
+    "fold": 1,
+    "csv_path": "/home/heyong/Protein_ADMET_SaProt/cv5_random/fold_1.csv",
+    "train_n": 7200,
+    "valid_n": 800,
+    "test_n": 2000,
+    "train_pos": 3036,
+    "valid_pos": 337,
+    "test_pos": 843
+  },
+  {
+    "fold": 2,
+    "csv_path": "/home/heyong/Protein_ADMET_SaProt/cv5_random/fold_2.csv",
+    "train_n": 7200,
+    "valid_n": 800,
+    "test_n": 2000,
+    "train_pos": 3036,
+    "valid_pos": 337,
+    "test_pos": 843
+  },
+  {
+    "fold": 3,
+    "csv_path": "/home/heyong/Protein_ADMET_SaProt/cv5_random/fold_3.csv",
+    "train_n": 7200,
+    "valid_n": 800,
+    "test_n": 2000,
+    "train_pos": 3036,
+    "valid_pos": 337,
+    "test_pos": 843
+  },
+  {
+    "fold": 4,
+    "csv_path": "/home/heyong/Protein_ADMET_SaProt/cv5_random/fold_4.csv",
+    "train_n": 7200,
+    "valid_n": 800,
+    "test_n": 2000,
+    "train_pos": 3036,
+    "valid_pos": 337,
+    "test_pos": 843
+  }
+]
