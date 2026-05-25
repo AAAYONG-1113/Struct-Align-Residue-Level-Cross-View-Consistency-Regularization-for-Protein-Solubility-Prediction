@@ -12,14 +12,14 @@ The primary benchmark is **SaProt10k**, a 10,000-protein subset derived from the
 
 | Dataset | Model | AUC | Accuracy | MCC |
 |---|---|---:|---:|---:|
-| SaProt10k | ESM3-only | 0.7205 | 0.6154 | 0.2485 |
-| SaProt10k | ProtSolM | 0.8291 | 0.7260 | 0.4606 |
-| SaProt10k | Struct-Align w/o Align Loss | 0.8237 | 0.7115 | 0.4360 |
-| SaProt10k | Surface FiLM | 0.8175 | 0.7356 | 0.4801 |
-| SaProt10k | Struct-Align | 0.8565 | 0.7740 | 0.5544 |
-| NetSolP official | ProtSolM | 0.7653 | 0.7211 | 0.3643 |
-| NetSolP official | Struct-Align w/o Align Loss | 0.7830 | 0.7256 | 0.3961 |
-| NetSolP official | Struct-Align | 0.7677 | 0.7226 | 0.3680 |
+| SaProt10k | ESM3-only | 0.721 | 0.615 | 0.249 |
+| SaProt10k | ProtSolM | 0.829 | 0.726 | 0.461 |
+| SaProt10k | Struct-Align w/o Align Loss | 0.824 | 0.712 | 0.436 |
+| SaProt10k | Surface FiLM | 0.818 | 0.736 | 0.480 |
+| SaProt10k | Struct-Align | 0.857 | 0.774 | 0.554 |
+| NetSolP official | ProtSolM | 0.765 | 0.721 | 0.364 |
+| NetSolP official | Struct-Align w/o Align Loss | 0.783 | 0.726 | 0.396 |
+| NetSolP official | Struct-Align | 0.768 | 0.723 | 0.368 |
 
 The NetSolP result should be interpreted as an external protocol-transfer evaluation. Struct-Align is strongest on the SaProt10k main split, while the no-alignment graph-contrastive variant performs best under the NetSolP official protocol.
 

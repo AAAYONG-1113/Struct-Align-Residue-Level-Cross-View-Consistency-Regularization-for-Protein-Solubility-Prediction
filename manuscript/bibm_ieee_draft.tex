@@ -23,7 +23,7 @@
 \maketitle
 
 \begin{abstract}
-Protein solubility is a practical bottleneck in recombinant expression, protein engineering, structural biology, and biologics development. Recent protein language models provide strong sequence representations, but solubility is also shaped by three-dimensional context, including surface exposure, local residue environment, hydrophobic patches, and structural confidence. We present Struct-Align, a multimodal solubility predictor that couples ESM3 residue representations with a Geometric Vector Perceptron (GVP) residue graph through a residue-level sequence--structure alignment objective. The model combines frozen ESM3-open-small embeddings, a structure-aware GVP branch, global attention pooling, physicochemical surface features, supervised contrastive regularization, and a symmetric alignment loss between sequence-derived and structure-conditioned residue embeddings. On the SaProt10k benchmark, Struct-Align achieved AUC 0.8565, accuracy 0.7740, and MCC 0.5544, improving over ESM3-only (AUC 0.7205, MCC 0.2485) and an architecture-matched no-alignment ablation, Struct-Align w/o Align Loss (AUC 0.8237, MCC 0.4360). In the low-homology subset with less than 30\% sequence identity to training proteins, Struct-Align retained AUC 0.8326, accuracy 0.7589, and MCC 0.5390. Paired bootstrap testing confirmed significant gains over the no-alignment ablation on SaProt10k. External NetSolP transfer with ESMFold-derived structures showed competitive performance relative to ProtSolM (AUC 0.7677 versus 0.7653) but favored the no-alignment variant, indicating a transfer boundary for the alignment objective. Inference-time stress tests showed that Struct-Align remains stable under structural-view shuffling and chain-only graph replacement, suggesting that the alignment objective functions primarily as training-time cross-view consistency regularization rather than inference-critical geometric matching. These results support residue-level sequence--structure alignment as a useful representation-shaping objective while highlighting protocol-level distribution shift as a key challenge for external transfer.
+Protein solubility is a practical bottleneck in recombinant expression, protein engineering, structural biology, and biologics development. Recent protein language models provide strong sequence representations, but solubility is also shaped by three-dimensional context, including surface exposure, local residue environment, hydrophobic patches, and structural confidence. We present Struct-Align, a multimodal solubility predictor that couples ESM3 residue representations with a Geometric Vector Perceptron (GVP) residue graph through a residue-level sequence--structure alignment objective. The model combines frozen ESM3-open-small embeddings, a structure-aware GVP branch, global attention pooling, physicochemical surface features, supervised contrastive regularization, and a symmetric alignment loss between sequence-derived and structure-conditioned residue embeddings. On the SaProt10k benchmark, Struct-Align achieved AUC 0.857, accuracy 0.774, and MCC 0.554, improving over ESM3-only (AUC 0.721, MCC 0.249) and an architecture-matched no-alignment ablation, Struct-Align w/o Align Loss (AUC 0.824, MCC 0.436). In the low-homology subset with less than 30\% sequence identity to training proteins, Struct-Align retained AUC 0.833, accuracy 0.759, and MCC 0.539. Paired bootstrap testing confirmed significant gains over the no-alignment ablation on SaProt10k. External NetSolP transfer with ESMFold-derived structures showed competitive performance relative to ProtSolM (AUC 0.768 versus 0.765) but favored the no-alignment variant, indicating a transfer boundary for the alignment objective. Inference-time stress tests showed that Struct-Align remains stable under structural-view shuffling and chain-only graph replacement, suggesting that the alignment objective functions primarily as training-time cross-view consistency regularization rather than inference-critical geometric matching. These results support residue-level sequence--structure alignment as a useful representation-shaping objective while highlighting protocol-level distribution shift as a key challenge for external transfer.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -122,7 +122,7 @@ We report AUC, accuracy, and Matthews correlation coefficient (MCC). Accuracy an
 \section{Results}
 
 \subsection{Struct-Align Improves SaProt10k Prediction}
-The main SaProt10k results are shown in Table~\ref{tab:saprot} and Fig.~\ref{fig:saprot10k}. ESM3-only achieved AUC 0.7205, accuracy 0.6154, and MCC 0.2485, establishing that a frozen ESM3 sequence representation alone is not sufficient for the local solubility benchmark. Reproduced ProtSolM improved substantially, reaching AUC 0.8291, accuracy 0.7260, and MCC 0.4606. GVP+SupCon reached AUC 0.8237, accuracy 0.7115, and MCC 0.4360.
+The main SaProt10k results are shown in Table~\ref{tab:saprot} and Fig.~\ref{fig:saprot10k}. ESM3-only achieved AUC 0.721, accuracy 0.615, and MCC 0.249, establishing that a frozen ESM3 sequence representation alone is not sufficient for the local solubility benchmark. Reproduced ProtSolM improved substantially, reaching AUC 0.829, accuracy 0.726, and MCC 0.461. GVP+SupCon reached AUC 0.824, accuracy 0.712, and MCC 0.436.
 
 \begin{table}[!t]
 \centering
@@ -132,25 +132,25 @@ The main SaProt10k results are shown in Table~\ref{tab:saprot} and Fig.~\ref{fig
 \toprule
 Model & AUC & Acc. & MCC \\
 \midrule
-ESM3-only & 0.7205 & 0.6154 & 0.2485 \\
-Official-like ESM1b & 0.6305 & 0.5817 & 0.2358 \\
-NetSolP-style ESM12 & 0.6788 & 0.5433 & 0.1149 \\
-ProtSolM & 0.8291 & 0.7260 & 0.4606 \\
-Attn-pool & 0.8240 & 0.6827 & 0.4057 \\
-\textbf{Struct-Align} w/o Align Loss & 0.8237 & 0.7115 & 0.4360 \\
-SupCon+LayerMix & 0.8005 & 0.7163 & 0.4428 \\
-Struct-adapter & 0.7806 & 0.6731 & 0.3571 \\
-Cross-attn & 0.8107 & 0.6971 & 0.4311 \\
-Surface FiLM & 0.8175 & 0.7356 & 0.4801 \\
-\rowcolor{gray!12}\textbf{Struct-Align} & \textbf{0.8565} & \textbf{0.7740} & \textbf{0.5544} \\
+ESM3-only & 0.721 & 0.615 & 0.249 \\
+Official-like ESM1b & 0.631 & 0.582 & 0.236 \\
+NetSolP-style ESM12 & 0.679 & 0.543 & 0.115 \\
+ProtSolM & 0.829 & 0.726 & 0.461 \\
+Attn-pool & 0.824 & 0.683 & 0.406 \\
+\textbf{Struct-Align} w/o Align Loss & 0.824 & 0.712 & 0.436 \\
+SupCon+LayerMix & 0.801 & 0.716 & 0.443 \\
+Struct-adapter & 0.781 & 0.673 & 0.357 \\
+Cross-attn & 0.811 & 0.697 & 0.431 \\
+Surface FiLM & 0.818 & 0.736 & 0.480 \\
+\rowcolor{gray!12}\textbf{Struct-Align} & \textbf{0.857} & \textbf{0.774} & \textbf{0.554} \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Struct-Align produced the strongest main-split SaProt10k result, with AUC 0.8565, accuracy 0.7740, and MCC 0.5544. The bootstrapped 95\% confidence intervals were AUC [0.8025, 0.9052], accuracy [0.7163, 0.8269], and MCC [0.4351, 0.6609]. Compared with ESM3-only, Struct-Align improved AUC by 0.1360 and MCC by 0.3059. Compared with Struct-Align w/o Align Loss, which removes only the explicit residue alignment term while retaining the graph and supervised contrastive components, Struct-Align improved AUC by 0.0328 and MCC by 0.1184. Paired bootstrap testing showed that the improvement over the no-alignment ablation was significant for AUC ($p=0.0436$), accuracy ($p=0.0128$), and MCC ($p=0.0144$). Compared with reproduced ProtSolM, Struct-Align was numerically stronger; this difference was not statistically significant for AUC ($p=0.2276$) or MCC ($p=0.0944$).
+Struct-Align produced the strongest main-split SaProt10k result, with AUC 0.857, accuracy 0.774, and MCC 0.554. The bootstrapped 95\% confidence intervals were AUC [0.803, 0.905], accuracy [0.716, 0.827], and MCC [0.435, 0.661]. Compared with ESM3-only, Struct-Align improved AUC by 0.136 and MCC by 0.306. Compared with Struct-Align w/o Align Loss, which removes only the explicit residue alignment term while retaining the graph and supervised contrastive components, Struct-Align improved AUC by 0.033 and MCC by 0.118. Paired bootstrap testing showed that the improvement over the no-alignment ablation was significant for AUC ($p=0.0436$), accuracy ($p=0.0128$), and MCC ($p=0.0144$). Compared with reproduced ProtSolM, Struct-Align was numerically stronger; this difference was not statistically significant for AUC ($p=0.2276$) or MCC ($p=0.0944$).
 
 \subsection{Low-Homology Evaluation}
-The less-than-30\% identity subset contains 141 test proteins. In this subset, Struct-Align reached AUC 0.8326, accuracy 0.7589, and MCC 0.5390. ProtSolM reached AUC 0.7963, accuracy 0.7092, and MCC 0.4261, while Struct-Align w/o Align Loss reached AUC 0.8048, accuracy 0.6950, and MCC 0.4100. These results support the interpretation that Struct-Align is not simply exploiting close homologs in the local benchmark. However, the subset is smaller than the full test set, so it should be interpreted as supportive evidence rather than a complete guarantee against homology-related bias.
+The less-than-30\% identity subset contains 141 test proteins. In this subset, Struct-Align reached AUC 0.833, accuracy 0.759, and MCC 0.539. ProtSolM reached AUC 0.796, accuracy 0.709, and MCC 0.426, while Struct-Align w/o Align Loss reached AUC 0.805, accuracy 0.695, and MCC 0.410. These results support the interpretation that Struct-Align is not simply exploiting close homologs in the local benchmark. However, the subset is smaller than the full test set, so it should be interpreted as supportive evidence rather than a complete guarantee against homology-related bias.
 
 \subsection{Ablation Analysis and Alignment-Weight Sensitivity}
 \begin{figure*}[!t]
@@ -160,11 +160,11 @@ The less-than-30\% identity subset contains 141 test proteins. In this subset, S
 \label{fig:ablation}
 \end{figure*}
 
-Fig.~\ref{fig:ablation} and Table~\ref{tab:ablation} summarize the controlled ablation trajectory on SaProt10k. The sequence-only ESM3 baseline reached AUC 0.7205 and MCC 0.2485. Adding a structure-aware graph branch through SaProt-GVP substantially improved AUC to 0.8316 and MCC to 0.4001, indicating that structural context provides useful information beyond frozen ESM3 sequence embeddings. The architecture-matched no-alignment model, Struct-Align w/o Align Loss, further improved calibrated classification over SaProt-GVP, reaching accuracy 0.7115 and MCC 0.4360.
+Fig.~\ref{fig:ablation} and Table~\ref{tab:ablation} summarize the controlled ablation trajectory on SaProt10k. The sequence-only ESM3 baseline reached AUC 0.721 and MCC 0.249. Adding a structure-aware graph branch through SaProt-GVP substantially improved AUC to 0.832 and MCC to 0.400, indicating that structural context provides useful information beyond frozen ESM3 sequence embeddings. The architecture-matched no-alignment model, Struct-Align w/o Align Loss, further improved calibrated classification over SaProt-GVP, reaching accuracy 0.712 and MCC 0.436.
 
-The key ablation is the comparison between Struct-Align and Struct-Align w/o Align Loss. These two models share the same ESM3 backbone, GVP structural branch, graph pooling, supervised contrastive regularization, and classifier; they differ only in whether the residue-level sequence--structure alignment objective is included during training. Adding this objective increased AUC from 0.8237 to 0.8565, accuracy from 0.7115 to 0.7740, and MCC from 0.4360 to 0.5544. The paired bootstrap tests reported above show that these gains are statistically significant, supporting the alignment term as a direct contributor rather than a cosmetic architectural change.
+The key ablation is the comparison between Struct-Align and Struct-Align w/o Align Loss. These two models share the same ESM3 backbone, GVP structural branch, graph pooling, supervised contrastive regularization, and classifier; they differ only in whether the residue-level sequence--structure alignment objective is included during training. Adding this objective increased AUC from 0.824 to 0.857, accuracy from 0.712 to 0.774, and MCC from 0.436 to 0.554. The paired bootstrap tests reported above show that these gains are statistically significant, supporting the alignment term as a direct contributor rather than a cosmetic architectural change.
 
-Additional fusion variants did not explain the improvement. Cross-attention reached AUC 0.8107 and MCC 0.4311, while Surface FiLM reached AUC 0.8175 and MCC 0.4801. Surface FiLM improved thresholded metrics relative to the no-alignment model but still remained below Struct-Align, especially in AUC and MCC. This pattern suggests that the main gain is not simply due to adding another fusion module; the training-time residue-level consistency constraint provides a more effective representation-shaping signal.
+Additional fusion variants did not explain the improvement. Cross-attention reached AUC 0.811 and MCC 0.431, while Surface FiLM reached AUC 0.818 and MCC 0.480. Surface FiLM improved thresholded metrics relative to the no-alignment model but still remained below Struct-Align, especially in AUC and MCC. This pattern suggests that the main gain is not simply due to adding another fusion module; the training-time residue-level consistency constraint provides a more effective representation-shaping signal.
 
 \begin{table}[t]
 \centering
@@ -174,24 +174,24 @@ Additional fusion variants did not explain the improvement. Cross-attention reac
 \toprule
 Model & AUC & Acc. & MCC \\
 \midrule
-ESM3-only & 0.7205 & 0.6154 & 0.2485 \\
-SaProt-GVP & 0.8316 & 0.6875 & 0.4001 \\
-\textbf{Struct-Align} w/o Align Loss & 0.8237 & 0.7115 & 0.4360 \\
-Cross-attn & 0.8107 & 0.6971 & 0.4311 \\
-Surface FiLM & 0.8175 & 0.7356 & 0.4801 \\
-\rowcolor{gray!12}\textbf{Struct-Align} & \textbf{0.8565} & \textbf{0.7740} & \textbf{0.5544} \\
+ESM3-only & 0.721 & 0.615 & 0.249 \\
+SaProt-GVP & 0.832 & 0.688 & 0.400 \\
+\textbf{Struct-Align} w/o Align Loss & 0.824 & 0.712 & 0.436 \\
+Cross-attn & 0.811 & 0.697 & 0.431 \\
+Surface FiLM & 0.818 & 0.736 & 0.480 \\
+\rowcolor{gray!12}\textbf{Struct-Align} & \textbf{0.857} & \textbf{0.774} & \textbf{0.554} \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The alignment-weight sweep further supports a regularization interpretation. Nonzero alignment weights improved test AUC over $\lambda_{align}=0$ (0.8154), with the highest AUC at $\lambda_{align}=1.0$ (0.8440). In contrast, threshold-sensitive MCC peaked at a moderate weight (0.5000 at $\lambda_{align}=0.05$) and declined under stronger alignment (0.3623 at $\lambda_{align}=0.5$ and 0.4268 at $\lambda_{align}=1.0$). Thus, increasing alignment strength can preserve or improve ranking discrimination while degrading calibrated classification, suggesting an alignment-induced ranking--calibration trade-off rather than a simple monotonic improvement.
+The alignment-weight sweep further supports a regularization interpretation. Nonzero alignment weights improved test AUC over $\lambda_{align}=0$ (0.815), with the highest AUC at $\lambda_{align}=1.0$ (0.844). In contrast, threshold-sensitive MCC peaked at a moderate weight (0.500 at $\lambda_{align}=0.05$) and declined under stronger alignment (0.362 at $\lambda_{align}=0.5$ and 0.427 at $\lambda_{align}=1.0$). Thus, increasing alignment strength can preserve or improve ranking discrimination while degrading calibrated classification, suggesting an alignment-induced ranking--calibration trade-off rather than a simple monotonic improvement.
 
 \subsection{External Transfer with Predicted Structures}
-Table~\ref{tab:netsolp} shows the NetSolP official-protocol transfer results using ESMFold-derived structural inputs. ESM3-only reached AUC 0.7265, accuracy 0.6931, and MCC 0.2845. ProtSolM reached AUC 0.7653, accuracy 0.7211, and MCC 0.3643. Struct-Align reached AUC 0.7677, accuracy 0.7226, and MCC 0.3680, improving significantly over ESM3-only under paired bootstrap testing (AUC $p<0.001$, MCC $p=0.0020$) and matching ProtSolM within statistical uncertainty (AUC $p=0.8476$, MCC $p=0.9116$).
+Table~\ref{tab:netsolp} shows the NetSolP official-protocol transfer results using ESMFold-derived structural inputs. ESM3-only reached AUC 0.727, accuracy 0.693, and MCC 0.285. ProtSolM reached AUC 0.765, accuracy 0.721, and MCC 0.364. Struct-Align reached AUC 0.768, accuracy 0.723, and MCC 0.368, improving significantly over ESM3-only under paired bootstrap testing (AUC $p<0.001$, MCC $p=0.0020$) and matching ProtSolM within statistical uncertainty (AUC $p=0.8476$, MCC $p=0.9116$).
 
-The no-alignment variant obtained the highest NetSolP score, with AUC 0.7830, accuracy 0.7256, and MCC 0.3961. This result clarifies the operating regime of residue-level alignment: the alignment term is beneficial on SaProt10k, where it significantly improves the architecture-matched ablation, while external transfer may favor a less constrained graph-contrastive objective. We therefore interpret the NetSolP setting as a transfer stress test rather than as primary evidence that inference requires exact residue-level geometric correspondence.
+The no-alignment variant obtained the highest NetSolP score, with AUC 0.783, accuracy 0.726, and MCC 0.396. This result clarifies the operating regime of residue-level alignment: the alignment term is beneficial on SaProt10k, where it significantly improves the architecture-matched ablation, while external transfer may favor a less constrained graph-contrastive objective. We therefore interpret the NetSolP setting as a transfer stress test rather than as primary evidence that inference requires exact residue-level geometric correspondence.
 
-To test the mechanism, we evaluated frozen SaProt10k models under stronger structural-view perturbations. Surprisingly, even complete structural-view reassignment left performance essentially unchanged: full structural-view shuffle yielded AUC 0.8571 and MCC 0.5619, compared with the uncorrupted AUC 0.8565 and MCC 0.5544. Chain-only graph replacement (AUC 0.8610, MCC 0.5562) and 50\% contact rewiring (AUC 0.8571, MCC 0.5812) also preserved performance. These results indicate that the benefit of the alignment objective is primarily realized during representation shaping in training rather than through inference-critical geometric matching.
+To test the mechanism, we evaluated frozen SaProt10k models under stronger structural-view perturbations. Surprisingly, even complete structural-view reassignment left performance essentially unchanged: full structural-view shuffle yielded AUC 0.857 and MCC 0.562, compared with the uncorrupted AUC 0.857 and MCC 0.554. Chain-only graph replacement (AUC 0.861, MCC 0.556) and 50\% contact rewiring (AUC 0.857, MCC 0.581) also preserved performance. These results indicate that the benefit of the alignment objective is primarily realized during representation shaping in training rather than through inference-critical geometric matching.
 
 \begin{table}[t]
 \centering
@@ -201,17 +201,17 @@ To test the mechanism, we evaluated frozen SaProt10k models under stronger struc
 \toprule
 Model & AUC & Acc. & MCC & Thr. \\
 \midrule
-ESM1b-like & 0.6305 & 0.5817 & 0.2358 & -- \\
-ESM3-only & 0.7265 & 0.6931 & 0.2845 & 0.310 \\
-ProtSolM & 0.7653 & 0.7211 & 0.3643 & 0.600 \\
-\rowcolor{gray!12}\textbf{No-align} & \textbf{0.7830} & \textbf{0.7256} & \textbf{0.3961} & 0.640 \\
-Struct-Align & 0.7677 & 0.7226 & 0.3680 & 0.605 \\
+ESM1b-like & 0.631 & 0.582 & 0.236 & -- \\
+ESM3-only & 0.727 & 0.693 & 0.285 & 0.310 \\
+ProtSolM & 0.765 & 0.721 & 0.364 & 0.600 \\
+\rowcolor{gray!12}\textbf{No-align} & \textbf{0.783} & \textbf{0.726} & \textbf{0.396} & 0.640 \\
+Struct-Align & 0.768 & 0.723 & 0.368 & 0.605 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \subsection{Repeated-Evaluation Summary}
-Repeated evaluations provide context for the main split result (Table~\ref{tab:robustness}). The same-split three-seed mean was AUC 0.8227, accuracy 0.7147, and MCC 0.4430. Random five-fold cross-validation produced mean AUC 0.8107 ($\pm$0.0211), accuracy 0.7275 ($\pm$0.0154), and MCC 0.4379 ($\pm$0.0381). These estimates are lower than the strongest main-split result, indicating optimization sensitivity under the current multimodal training configuration. Nevertheless, they remain consistent with the central ablation finding that residue-level alignment improves the architecture-matched SaProt10k baseline.
+Repeated evaluations provide context for the main split result (Table~\ref{tab:robustness}). The same-split three-seed mean was AUC 0.823, accuracy 0.715, and MCC 0.443. Random five-fold cross-validation produced mean AUC 0.811 ($\pm$0.021), accuracy 0.728 ($\pm$0.015), and MCC 0.438 ($\pm$0.038). These estimates are lower than the strongest main-split result, indicating optimization sensitivity under the current multimodal training configuration. Nevertheless, they remain consistent with the central ablation finding that residue-level alignment improves the architecture-matched SaProt10k baseline.
 
 \begin{table}[t]
 \centering
@@ -223,9 +223,9 @@ Repeated evaluations provide context for the main split result (Table~\ref{tab:r
 \toprule
 Setting & AUC & Acc. & MCC \\
 \midrule
-\rowcolor{gray!12}\textbf{Main split} & \textbf{0.8565} & \textbf{0.7740} & \textbf{0.5544} \\
-3 seeds & 0.8227 & 0.7147 & 0.4430 \\
-Random CV5 & 0.8107{\scriptsize$\pm$0.0211} & 0.7275{\scriptsize$\pm$0.0154} & 0.4379{\scriptsize$\pm$0.0381} \\
+\rowcolor{gray!12}\textbf{Main split} & \textbf{0.857} & \textbf{0.774} & \textbf{0.554} \\
+3 seeds & 0.823 & 0.715 & 0.443 \\
+Random CV5 & 0.811{\scriptsize$\pm$0.021} & 0.728{\scriptsize$\pm$0.015} & 0.438{\scriptsize$\pm$0.038} \\
 \bottomrule
 \end{tabular}
 \end{table}
